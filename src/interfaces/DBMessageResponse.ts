@@ -1,7 +1,7 @@
 import {Cat} from './Cat';
-import {UserOutput} from './User';
+import {User} from './User';
 
 export default interface DBMessageResponse {
-  message: string;
-  data: UserOutput | Cat;
+    message: string;
+    data: Cat | Cat[] | User | User[];
 }

@@ -1,14 +1,19 @@
 import express, {Request} from 'express';
 import {
   catDelete,
+  catDeleteAdmin,
+  // catDelete,
   catGet,
+  catGetByBoundingBox,
+  catGetByUser,
   catListGet,
   catPost,
   catPut,
-  catGetByUser,
-  catGetByBoundingBox,
   catPutAdmin,
-  catDeleteAdmin,
+  // catGetByUser,
+  // catGetByBoundingBox,
+  // catPutAdmin,
+  // catDeleteAdmin,
 } from '../controllers/catController';
 import multer, {FileFilterCallback} from 'multer';
 import {body, param, query} from 'express-validator';
