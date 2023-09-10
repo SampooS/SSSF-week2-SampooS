@@ -23,7 +23,7 @@ app.get<{}, MessageResponse>('/', (req, res) => {
 
 app.use('/api/v1', api);
 
-app.use(notFound);
+// app.use(notFound);
 app.use(errorHandler);
 
 export default app;
