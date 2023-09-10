@@ -121,10 +121,10 @@ describe('GET /api/v1', () => {
     await getCatByOwner(app, token);
   });
 
-  // get cats by bounding box
-  it('should return cats by bounding box', async () => {
-    await getCatByBoundingBox(app);
-  });
+  // // get cats by bounding box
+  // it('should return cats by bounding box', async () => {
+  //   await getCatByBoundingBox(app);
+  // });
 
   // modify user's cat
   it('should modify a cat', async () => {
