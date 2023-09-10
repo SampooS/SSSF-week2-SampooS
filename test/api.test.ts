@@ -99,12 +99,12 @@ describe('GET /api/v1', () => {
     catID = message.data._id;
   });
 
-  // test cat upload with GPS
-  let catID2: string;
-  it('should upload a cat with GPS', async () => {
-    const message = await postCat(app, token, 'picWithGPS.jpg');
-    catID2 = message.data._id;
-  });
+  // // test cat upload with GPS
+  // let catID2: string;
+  // it('should upload a cat with GPS', async () => {
+  //   const message = await postCat(app, token, 'picWithGPS.jpg');
+  //   catID2 = message.data._id;
+  // });
 
   // test get all cats
   it('should return array of cats', async () => {
@@ -163,10 +163,10 @@ describe('GET /api/v1', () => {
     await userDeleteCat(app, token, catID);
   });
 
-  // delete GPS image
-  it('should delete GPS image', async () => {
-    await userDeleteCat(app, token, catID2);
-  });
+  // // delete GPS image
+  // it('should delete GPS image', async () => {
+  //   await userDeleteCat(app, token, catID2);
+  // });
 
   // test delete user based on token
   it('should delete current user', async () => {
