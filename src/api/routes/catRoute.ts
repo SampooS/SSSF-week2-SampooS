@@ -42,8 +42,7 @@ router
   .post(
     passport.authenticate('jwt', {session: false}),
     upload.single('cat'),
-    makeThumbnail,
-    getCoordinates,
+
     catPost
   );
 

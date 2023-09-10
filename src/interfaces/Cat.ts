@@ -3,12 +3,34 @@ import {Document, Date, Types} from 'mongoose';
 
 // TODO: cat interface
 interface Cat extends Document {
-    cat_name: string;
+    _id: any;
+    cat_name: String;
     weight: number;
-    filename: string;
+    filename: String;
     birthdate: Date;
     location: Point;
     owner: Types.ObjectId;
 }
 
-export {Cat};
+interface PostCat {
+    cat_name: String;
+    weight: number;
+    birthdate: Date;
+    location: Point;
+    owner: Types.ObjectId;
+};
+
+interface CatOutput {
+    location: Point;
+    _id: any;
+    cat_name: String;
+    weight: any;
+    birthdate: Date;
+    owner: {
+        _id: any;
+        user_name: String;
+        email: String;
+    }
+}
+
+export {Cat, PostCat, CatOutput};

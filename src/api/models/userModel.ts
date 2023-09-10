@@ -10,6 +10,7 @@ const userSchema = new Schema<User>({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     role: {
         type: String,
@@ -19,6 +20,7 @@ const userSchema = new Schema<User>({
     password: {
         type: String,
         hide: true,
+        required: true,
     },
 });
 

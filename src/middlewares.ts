@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import jwt from 'jsonwebtoken';
 import {NextFunction, Request, Response} from 'express';
 import sharp from 'sharp';
 import {ExifImage} from 'exif';
 import ErrorResponse from './interfaces/ErrorResponse';
 import CustomError from './classes/CustomError';
+import { TokenUser, UserOutput } from './interfaces/User';
+import userModel from './api/models/userModel';
 
 // convert GPS coordinates to decimal format
 // for longitude, send exifData.gps.GPSLongitude, exifData.gps.GPSLongitudeRef
@@ -87,4 +90,29 @@ const makeThumbnail = async (
   }
 };
 
-export {notFound, errorHandler, getCoordinates, makeThumbnail};
+const authenticate = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const bearer = req.headers.authorization;
+
+    if (!bearer) {
+      next(new CustomError('No token', 401));
+      return;
+    }
+
+    const token = bearer.split(' ')[1];
+
+    if (!token) {
+      next(new CustomError('No token', 401));
+      return;
+    }
+
+    const userFromToken: TokenUser = jwt.verify(token, process.env.JWT_SECRET as string) as TokenUser;
+
+    const user = await userModel.findById(userFromToken.id).select('-password').select("-role") as UserOutput;
+
+  } catch (error) {
+    next(new CustomError('Server error', 500));    
+  }
+}
+
+export {notFound, errorHandler, getCoordinates, makeThumbnail, authenticate};

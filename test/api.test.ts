@@ -9,9 +9,9 @@ import {
   postUser,
   putUser,
 } from './userFunctions';
-import {User, UserTest} from '../src/interfaces/User';
+import { User, UserTest } from '../src/interfaces/User';
 import mongoose from 'mongoose';
-import {getNotFound} from './testFunctions';
+import { getNotFound } from './testFunctions';
 import {
   adminDeleteCat,
   adminPutCat,
@@ -66,8 +66,8 @@ describe('GET /api/v1', () => {
   // test login
   it('should return a user object and bearer token on valid credentials', async () => {
     user = await postAuthLogin(app, {
-      username: testUser.email!,
-      password: testUser.password!,
+      user_name: testUser.email,
+      password: testUser.password,
     });
     token = user.token;
   });
@@ -142,7 +142,7 @@ describe('GET /api/v1', () => {
   let adminToken: string;
   it('should login as admin', async () => {
     const user = await postAuthLogin(app, {
-      username: 'admin@metropolia.fi',
+      user_name: 'admin@metropolia.fi',
       password: '1234',
     });
     adminToken = user.token;

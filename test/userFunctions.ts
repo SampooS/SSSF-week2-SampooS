@@ -125,7 +125,7 @@ const getCurrentUser = (
 
 const postAuthLogin = (
   url: string | Function,
-  user: {username: string; password: string}
+  user: {user_name: string; password: string}
 ): Promise<UserWithToken> => {
   return new Promise((resolve, reject) => {
     request(url)

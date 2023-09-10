@@ -15,6 +15,7 @@ const catSchema = new Schema<Cat>({
     },
     filename: {
         type: String,
+        required: false,
     },
     birthdate: {
         type: Date,
@@ -24,17 +25,17 @@ const catSchema = new Schema<Cat>({
         type: {
             type: String,
             enum: ['Point'],
+            default: 'Point',
             required: true,
         },
         coordinates: {
             type: [Number],
-            required: true,
         },
     },
     owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'Owner',
         required: true,
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }
 });
 

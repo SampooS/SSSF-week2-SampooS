@@ -4,6 +4,7 @@ import expect from 'expect';
 import {Cat} from '../src/interfaces/Cat';
 import DBMessageResponse from '../src/interfaces/DBMessageResponse';
 import {Types} from 'mongoose';
+import PostMessageResponse from '../src/interfaces/PostMessageResponse';
 
 const getCat = (url: string | Function): Promise<Cat[]> => {
   return new Promise((resolve, reject) => {
@@ -53,7 +54,7 @@ const postCat = (
   url: string | Function,
   token: string,
   pic: string
-): Promise<DBMessageResponse> => {
+): Promise<PostMessageResponse> => {
   return new Promise((resolve, reject) => {
     request(url)
       .post('/api/v1/cats/')
@@ -67,7 +68,7 @@ const postCat = (
         if (err) {
           reject(err);
         } else {
-          const cat: DBMessageResponse = response.body;
+          const cat: PostMessageResponse = response.body;
           expect(cat.data._id).not.toBe('');
           expect(cat.message).not.toBe('');
           resolve(response.body);

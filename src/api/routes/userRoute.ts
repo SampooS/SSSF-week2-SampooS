@@ -26,6 +26,6 @@ router.get(
   checkToken
 );
 
-router.route('/:id').get(userGet);
+router.route('/:_id').get(userGet);
 
 export default router;
